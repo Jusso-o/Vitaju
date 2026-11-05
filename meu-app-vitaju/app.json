@@ -1,7 +1,44 @@
 {
-  "plugins": [
-    "expo-status-bar",
-    "expo-video",
-    "expo-web-browser"
-  ]
+  "expo": {
+    "name": "Vitaju",
+    "slug": "vitaju",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#10151D",
+    "android": {
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "package": "com.anonymous.vitaju"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "O Vitaju usa a câmera para detectar pontos do corpo durante os exercícios. As imagens não são enviadas ao servidor."
+      }
+    },
+    "plugins": [
+      "./plugins/withAndroidCleartextTraffic",
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "O Vitaju usa a câmera para detectar pontos do corpo durante os exercícios. As imagens não são enviadas ao servidor.",
+          "enableMicrophonePermission": false,
+          "enableFrameProcessors": true
+        }
+      ],
+      [
+        "react-native-mediapipe-posedetection",
+        {
+          "assetsPaths": [
+            "./assets/models"
+          ]
+        }
+      ],
+      "expo-video",
+      "expo-status-bar",
+      "expo-web-browser"
+    ]
+  }
 }
